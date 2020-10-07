@@ -1,0 +1,374 @@
+<template>
+    <div class="main">
+        <div class="slds-text-heading_medium slds-p-bottom_small slds-p-top_x-small Page"><span class="head">HHF Quote
+                Calculator</span>
+            <div class="slds-float_right slds-p-right_medium">
+                <lightning-icon class="slds-icon-text-default slds-p-around_xx-small btnicon" icon-name="utility:info"
+                    size="x-small">
+                </lightning-icon>
+                <span class="slds-p-right_xx-small"></span>
+                <lightning-icon class="slds-p-around_xx-small btnicon" icon-name="utility:settings" size="x-small">
+                </lightning-icon>
+            </div>
+        </div>
+        <div class="slds-grid slds-wrap slds-p-horizontal_medium slds-p-top_medium pos">
+            <div
+                class="slds-p-top_small slds-cols lds-size_1-of-1 slds-medium-size_3-of-6 slds-large-size_3-of-12 slds-p-horizontal_medium color">
+                <span class="mainlabel">Quote Name</span>
+            </div>
+            <div
+                class="slds-p-top_small slds-col slds-size_1-of-1 slds-medium-size_3-of-6 slds-large-size_3-of-12 slds-p-right_medium slds-p-bottom_medium">
+                <lightning-input type="text" variant="label-hidden"></lightning-input>
+            </div>
+            <div
+                class="slds-p-top_small slds-p-left_medium slds-cols slds-size_1-of-1 slds-medium-size_3-of-6 slds-large-size_3-of-12 slds-p-horizontal_medium color">
+                <span class="mainlabel">Date</span>
+            </div>
+            <div
+                class="slds-p-top_small slds-col slds-size_1-of-1 slds-medium-size_3-of-6 slds-large-size_3-of-12 slds-p-right_medium slds-p-bottom_medium">
+                <lightning-input type="Date" variant="label-hidden"></lightning-input>
+            </div>
+            <div
+                class="slds-p-top_small slds-p-left_x-small slds-cols lds-size_1-of-1 slds-medium-size_3-of-6 slds-large-size_3-of-12 slds-p-horizontal_medium color color">
+                <span class="mainlabel">Opportunity</span>
+            </div>
+            <div
+                class="slds-p-top_small slds-col slds-size_1-of-1 slds-medium-size_3-of-6 slds-large-size_3-of-12 slds-p-right_medium slds-p-bottom_large">
+                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+                    <lightning-icon class="slds-icon slds-input__icon slds-input__icon_left slds-icon-text-default"
+                        icon-name="utility:search" size="x-small"></lightning-icon>
+                    <input id="text-input-id-2" class="slds-input" type="text" value="" />
+                </div>
+            </div>
+            <div
+                class="slds-p-top_small slds-p-left_medium slds-cols slds-size_1-of-1 slds-medium-size_3-of-6 slds-large-size_3-of-12 slds-p-horizontal_medium color">
+                <span class="mainlabel">Account</span>
+            </div>
+            <div
+                class="slds-p-top_small slds-col slds-size_1-of-1 slds-medium-size_3-of-6 slds-large-size_3-of-12 slds-p-right_medium slds-p-bottom_large">
+                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+                    <lightning-icon class="slds-icon slds-input__icon slds-input__icon_left slds-icon-text-default"
+                        icon-name="utility:search" size="x-small"></lightning-icon>
+                    <input id="text-input-id-1" class="slds-input" type="text" value="" />
+                </div>
+            </div>
+        </div>
+
+                                       <!--- Quote Details-->
+        <div class="slds-grid slds-wrap slds-p-horizontal_large slds-p-top_medium pos">
+            <div class="slds-size_1-of-1 slds-medium-size_2-of-6 slds-large-size_12-of-12">
+                <section class="slds-accordion__section slds-is-open">
+                    <div class="slds-accordion__summary">
+                        <h4 class="slds-accordion__summary-heading slds-text-heading_medium">
+                            <button aria-controls="accordion-details-01" aria-expanded="false"
+                                class="slds-button slds-button_reset slds-accordion__summary-action">
+                                <lightning-icon icon-name="utility:switch" class="slds-p-left_xx-small" size="x-small">
+                                </lightning-icon>
+                                <span class="slds-accordion__summary-content" title="Quote Details">Quote Details</span>
+                            </button>
+                        </h4>
+                    </div>
+                </section>
+            </div>
+            <div
+                class="slds-cols slds-size_1-of-1 slds-medium-size_2-of-6 slds-large-size_3-of-12 slds-p-horizontal_medium slds-float_left slds-p-left_xx-small color">
+                <span class="label"> Loan Facility Type</span>
+            </div>
+            <div
+                class=" slds-col slds-size_1-of-1 slds-medium-size_2-of-6 slds-large-size_3-of-12 slds-p-right_medium slds-p-bottom_medium">
+                <lightning-combobox name="Loan" variant="label-hidden" placeholder="Select Progress">
+                </lightning-combobox>
+            </div>
+            <div
+                class="slds-cols slds-size_1-of-1 slds-medium-size_2-of-6 slds-large-size_3-of-12 slds-p-horizontal_medium slds-float_left slds-p-left_xx-small color">
+                <span class="label">State</span>
+            </div>
+            <div
+                class=" slds-col slds-size_1-of-1 slds-medium-size_2-of-6 slds-large-size_3-of-12 slds-p-right_medium slds-p-bottom_medium">
+                <lightning-combobox name="State" variant="label-hidden" placeholder="Select Progress">
+                </lightning-combobox>
+            </div>
+            <div
+                class="slds-cols slds-size_1-of-1 slds-medium-size_2-of-6 slds-large-size_3-of-12 slds-p-horizontal_medium slds-float_left slds-p-left_xx-small color">
+                <span class="label"> Good Type </span>
+            </div>
+            <div
+                class=" slds-col slds-size_1-of-1 slds-medium-size_2-of-6 slds-large-size_3-of-12 slds-p-right_medium slds-p-bottom_medium">
+                <lightning-combobox name="Good" variant="label-hidden" placeholder="Select Progress">
+                </lightning-combobox>
+            </div>
+            <div
+                class="slds-cols slds-size_1-of-1 slds-medium-size_2-of-6 slds-large-size_3-of-12 slds-p-horizontal_medium slds-float_left slds-p-left_xx-small color">
+                <label class="slds-checkbox_toggle slds-grid"> <span class="slds-p-right_small check">Cost Price</span>
+                    <input type="checkbox" name="checkbox-toggle-16" value="checkbox-toggle-16"
+                        aria-describedby="checkbox-toggle-16" />
+                    <span id="checkbox-toggle-16" class="slds-checkbox_faux_container" aria-live="assertive">
+                        <span class="slds-checkbox_faux"></span>
+                        <span class="slds-checkbox_on">Inc.GST</span>
+                        <span class="slds-checkbox_off"></span>
+                    </span>
+                </label>
+            </div>
+            <div
+                class=" slds-col slds-size_1-of-1 slds-medium-size_2-of-6 slds-large-size_3-of-12 slds-p-right_medium slds-p-bottom_medium">
+                <lightning-input type="Number" variant="label-hidden"></lightning-input>
+
+            </div>
+            <div
+                class="slds-cols slds-size_1-of-1 slds-medium-size_2-of-6 slds-large-size_3-of-12 slds-p-horizontal_medium slds-float_left slds-p-left_xx-small color">
+                <span class="label">Less Deposit </span>
+            </div>
+            <div
+                class=" slds-col slds-size_1-of-1 slds-medium-size_2-of-6 slds-large-size_3-of-12 slds-p-right_medium slds-p-bottom_medium">
+                <lightning-input type="text" variant="label-hidden"></lightning-input>
+            </div>
+            <div
+                class="slds-cols slds-size_1-of-1 slds-medium-size_2-of-6 slds-large-size_3-of-12 slds-p-horizontal_medium slds-float_left slds-p-left_xx-small color">
+                <span class="label"> Less Trade-In</span>
+            </div>
+            <div
+                class=" slds-col slds-size_1-of-1 slds-medium-size_2-of-6 slds-large-size_3-of-12 slds-p-right_medium slds-p-bottom_medium">
+                <lightning-input type="text" variant="label-hidden"></lightning-input>
+            </div>
+            <div
+                class="slds-cols slds-size_1-of-1 slds-medium-size_2-of-6 slds-large-size_3-of-12 slds-p-horizontal_medium slds-float_left slds-p-left_xx-small color">
+                <span class="label"> Principal Amount</span>
+            </div>
+            <div
+                class=" slds-col slds-size_1-of-1 slds-medium-size_2-of-6 slds-large-size_3-of-12 slds-p-right_medium slds-p-bottom_medium">
+                <lightning-input type="text" variant="label-hidden"></lightning-input>
+            </div>
+            <div
+                class="slds-cols slds-size_1-of-1 slds-medium-size_2-of-6 slds-large-size_3-of-12 slds-p-horizontal_medium slds-float_left slds-p-left_xx-small color">
+                <span class="label"> Amount Financed</span>
+            </div>
+            <div
+                class=" slds-col slds-size_1-of-1 slds-medium-size_2-of-6 slds-large-size_3-of-12 slds-p-right_medium slds-p-bottom_medium">
+                <lightning-input type="text" variant="label-hidden"></lightning-input>
+            </div>
+            <div
+                class="slds-cols slds-size_1-of-1 slds-medium-size_2-of-6 slds-large-size_3-of-12 slds-p-horizontal_medium slds-float_left slds-p-left_xx-small color">
+                <label class="slds-checkbox_toggle slds-grid"> <span class="slds-p-right_small check">Balloon</span>
+                    <input type="checkbox" size="x-small" name="checkbox-toggle-16" value="checkbox-toggle-16"
+                        aria-describedby="checkbox-toggle-16" />
+                    <span id="checkbox-toggle-17" class="slds-checkbox_faux_container" aria-live="assertive">
+                        <span class="slds-checkbox_faux"></span>
+                        <span class="slds-checkbox_on">Percent</span>
+                        <span class="slds-checkbox_off">Percent</span>
+                    </span>
+                </label>
+            </div>
+            <div
+                class=" slds-col slds-size_1-of-1 slds-medium-size_2-of-6 slds-large-size_3-of-12 slds-p-right_medium slds-p-bottom_medium">
+                <lightning-input type="text" variant="label-hidden"></lightning-input>
+            </div>
+            <div
+                class="slds-cols slds-size_1-of-1 slds-medium-size_2-of-6 slds-large-size_3-of-12 slds-p-horizontal_medium slds-float_left slds-p-left_xx-small color">
+                <span class="label">Unclaimable GST</span>
+            </div>
+            <div
+                class=" slds-col slds-size_1-of-1 slds-medium-size_2-of-6 slds-large-size_3-of-12 slds-p-right_medium slds-p-bottom_medium">
+                <lightning-input type="text" variant="label-hidden"></lightning-input>
+            </div>
+            <div
+                class="slds-cols slds-size_1-of-1 slds-medium-size_2-of-6 slds-large-size_3-of-12 slds-p-horizontal_medium slds-float_left slds-p-left_xx-small color">
+                <span class="label">Term(months) </span>
+            </div>
+            <div
+                class=" slds-col slds-size_1-of-1 slds-medium-size_2-of-6 slds-large-size_3-of-12 slds-p-right_medium slds-p-bottom_medium">
+                <lightning-input type="Number" variant="label-hidden"></lightning-input>
+            </div>
+            <div
+                class="slds-cols slds-size_1-of-1 slds-medium-size_2-of-6 slds-large-size_3-of-12 slds-p-horizontal_medium slds-float_left slds-p-left_xx-small color">
+                <span class="label">Repayment Type </span>
+            </div>
+            <div
+                class=" slds-col slds-size_1-of-1 slds-medium-size_2-of-6 slds-large-size_3-of-12 slds-p-right_medium slds-p-bottom_medium">
+                <span>
+                    <lightning-button variant="brand" label="Advance"></lightning-button>
+                </span>
+                <span class="slds-p-around_x-small"></span>
+                <span>
+                    <lightning-button label="Arrears"></lightning-button>
+                </span>
+            </div>
+            <div
+                class="slds-cols slds-size_1-of-1 slds-medium-size_2-of-6 slds-large-size_3-of-12 slds-p-horizontal_medium slds-float_left slds-p-left_xx-small color">
+                <span class="label"> Repayment Frequency </span>
+            </div>
+            <div
+                class=" slds-col slds-size_1-of-1 slds-medium-size_2-of-6 slds-large-size_3-of-12 slds-p-right_medium slds-p-bottom_medium">
+                <lightning-combobox name="Repayment" variant="label-hidden" placeholder="Select Progress">
+                </lightning-combobox>
+            </div>
+        </div>
+                                        <!-- Published & Negotiated Base Rates -->
+
+        <div class="slds-grid slds-wrap slds-p-horizontal_large slds-p-top_medium slds-p-bottom_x-small pos">
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_2-of-6 slds-large-size_6-of-12  slds-p-right_medium">
+                <section class="slds-accordion__section slds-is-open">
+                    <div class="slds-accordion__summary">
+                        <h5 class="slds-accordion__summary-heading slds-text-heading_medium">
+                            <button aria-controls="accordion-details-01" aria-expanded="true"
+                                class="slds-button slds-button_reset slds-accordion__summary-action">
+                                <lightning-icon icon-name="utility:switch" class="slds-p-left_xx-small" size="x-small">
+                                </lightning-icon>
+                                <span class="slds-accordion__summary-content" title="Published Base Rates">Published
+                                    Base Rates</span>
+                            </button>
+                        </h5>
+                    </div>
+                </section>
+                <div
+                    class="slds-col slds-grid slds-p-top_xx-small slds-p-horizontal_medium slds-size_1-of-1 slds-medium-size_2-of-6 slds-large-size_6-of-6">
+                    <div class="slds-col slds-p-bottom_x-small slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_3-of-6 color">
+                        <span class="label"> Financier Rate </span>
+                    </div>
+                    <div class="slds-col slds-p-bottom_x-small slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_3-of-6 color">
+                        <lightning-input class="b" type="percent" variant="label-hidden">
+                        </lightning-input>
+                    </div>
+                </div>
+            
+                <div
+                    class="slds-col slds-grid slds-p-top_xx-small slds-p-horizontal_medium slds-size_1-of-1 slds-medium-size_2-of-6 slds-large-size_6-of-6 ">
+                    <div class="slds-col slds-p-bottom_x-small slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_3-of-6 color">
+                        <span class="label"> Customer Rate </span>
+                    </div>
+                    <div class="slds-col slds-p-bottom_x-small slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_3-of-6 color">
+                        <lightning-input class="b" type="percent" variant="label-hidden">
+                        </lightning-input>
+                    </div>
+                </div>
+                <div
+                class="slds-col slds-grid slds-p-top_xx-small slds-p-horizontal_medium slds-size_1-of-1 slds-medium-size_2-of-6 slds-large-size_6-of-6 ">
+                <div class="slds-col slds-p-bottom_x-small slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_3-of-6 color">
+                    <span class="label"> Repayment (months) </span>
+                </div>
+                <div class="slds-col slds-p-bottom_x-small slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_3-of-6 color">
+                    <lightning-input class="b" type="percent" variant="label-hidden">
+                    </lightning-input>
+                </div>
+            </div>
+
+            </div>
+            <div
+                class="slds-col slds-size_1-of-1 slds-medium-size_2-of-6 slds-large-size_6-of-12 slds-p-left_small slds-p-right_medium boxshadow">
+                <section class="slds-accordion__section slds-is-open">
+                    <div class="slds-accordion__summary">
+                        <h5 class="slds-accordion__summary-heading slds-text-heading_medium">
+                            <button aria-controls="accordion-details-01" aria-expanded="true"
+                                class="slds-button slds-button_reset slds-accordion__summary-action">
+                                <lightning-icon icon-name="utility:switch" class="slds-p-left_xx-small" size="x-small">
+                                </lightning-icon>
+                                <span class="slds-accordion__summary-content" title="Negotiated Base Rates">Negotiated
+                                    Base Rates</span>
+                            </button>
+                        </h5>
+                    </div>
+                </section>
+
+                <div
+                    class="slds-col slds-grid slds-p-top_xx-small slds-p-horizontal_medium slds-size_1-of-1 slds-medium-size_2-of-6 slds-large-size_6-of-6 ">
+                    <div class="slds-col slds-p-bottom_x-small slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_3-of-6 color">
+                        <span class="label"> Financier Rate </span>
+                    </div>
+                    <div class="slds-col slds-p-bottom_x-small slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_3-of-6 color">
+                        <lightning-input class="b" type="percent" variant="label-hidden">
+                        </lightning-input>
+                    </div>
+                </div>
+            
+                <div
+                    class="slds-col slds-grid slds-p-top_xx-small slds-p-horizontal_medium slds-size_1-of-1 slds-medium-size_2-of-6 slds-large-size_6-of-6 ">
+                    <div class="slds-col slds-p-bottom_x-small slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_3-of-6 color">
+                        <span class="label"> Customer Rate </span>
+                    </div>
+                    <div class="slds-col slds-p-bottom_x-small slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_3-of-6 color">
+                        <lightning-input class="b" type="percent" variant="label-hidden">
+                        </lightning-input>
+                    </div>
+                </div>
+                <div
+                class="slds-col slds-grid slds-p-top_xx-small slds-p-horizontal_medium slds-size_1-of-1 slds-medium-size_2-of-6 slds-large-size_6-of-6 ">
+                <div class="slds-col slds-p-bottom_x-small slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_3-of-6 color">
+                    <span class="label"> Repayment (months) </span>
+                </div>
+                <div class="slds-col slds-p-bottom_x-small slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_3-of-6 color">
+                    <lightning-input class="b" type="percent" variant="label-hidden">
+                    </lightning-input>
+                </div>
+            </div>
+
+            </div>
+        </div >
+                                       <!--- FEES & CHARGES -->
+
+        <div class="slds-grid slds-wrap slds-p-horizontal_large slds-p-top_medium pos">
+            <div class="slds-size_1-of-1 slds-medium-size_2-of-6 slds-large-size_12-of-12">
+                <section class="slds-accordion__section slds-is-open">
+                    <div class="slds-accordion__summary">
+                        <h5 class="slds-accordion__summary-heading slds-text-heading_medium">
+                            <button aria-controls="accordion-details-01" aria-expanded="false"
+                                class="slds-button slds-button_reset slds-accordion__summary-action">
+                                <lightning-icon icon-name="utility:switch" class="slds-p-left_xx-small" size="x-small">
+                                </lightning-icon>
+                                <span class="slds-accordion__summary-content" title="Fees and Charges">Fees &
+                                    Charges</span>
+                            </button>
+                        </h5>
+                    </div>
+                </section>
+            </div>
+<template for:each={addRow} for:item="add" for:index="index">
+            <div key={add} 
+                class="slds-p-left_small slds-p-top_x-small slds-col slds-size_1-of-1 slds-medium-size_3-of-6 slds-large-size_2-of-12 slds-p-right_medium slds-p-bottom_large color">
+                <label class="slds-p-bottom_xx-small color">Fee Type</label>
+                <lightning-input variant="label-hidden" type="text"></lightning-input>
+            </div>
+            <div key={add} 
+                class="slds-cols slds-p-top_xx-small slds-size_1-of-1 slds-medium-size_3-of-6 slds-large-size_2-of-12 slds-p-horizontal_medium slds-p-bottom_large ">
+                <div class="slds-p-bottom_xx-small color">$/%</div>
+                <label class="slds-checkbox_toggle slds-grid">
+                    <input type="checkbox" size="x-small" name="checkbox-toggle-16" value="checkbox-toggle-16"
+                        aria-describedby="checkbox-toggle-16" />
+                    <span class="slds-checkbox_faux_container" aria-live="assertive">
+                        <span class="slds-checkbox_faux"></span>
+                        <span class="slds-checkbox_on">Percent</span>
+                        <span class="slds-checkbox_off">Inactive</span>
+                    </span>
+                </label>
+            </div>
+            <div key={add} 
+                class=" slds-col slds-p-top_x-small slds-size_1-of-1 slds-medium-size_3-of-6 slds-large-size_2-of-12 slds-p-right_medium slds-p-bottom_large color">
+                <label class="slds-p-bottom_xx-small color">$</label>
+                <lightning-input variant="label-hidden" type="text"></lightning-input>
+            </div>
+            <div key={add} 
+                class=" slds-col slds-p-top_x-small slds-size_1-of-1 slds-medium-size_3-of-6 slds-large-size_2-of-12 slds-p-right_medium slds-p-bottom_large color">
+                <label class="slds-p-bottom_xx-small color">%</label>
+                <lightning-input variant="label-hidden" type="text"></lightning-input>
+            </div>
+            <div key={add} 
+                class="slds-cols slds-p-top_x-small slds-size_1-of-1 slds-medium-size_3-of-6 slds-large-size_2-of-12 slds-p-horizontal_medium slds-p-bottom_large">
+                <div class="slds-p-bottom_xx-small color">financed?</div>
+                <label class="slds-checkbox_toggle slds-grid">
+                    <input type="checkbox" size="x-small" name="checkbox-toggle-16" value="checkbox-toggle-16"
+                        aria-describedby="checkbox-toggle-16" />
+                    <span class="slds-checkbox_faux_container" aria-live="assertive">
+                        <span class="slds-checkbox_faux"></span>
+                        <span class="slds-checkbox_on">Percent</span>
+                        <span class="slds-checkbox_off">Inactive</span>
+                    </span>
+                </label>
+            </div>
+            <div key={add} 
+                class=" slds-col slds-p-top_large slds-size_1-of-1 slds-medium-size_3-of-6 slds-large-size_2-of-12 slds-p-right_medium slds-p-bottom_large color ">
+                <lightning-button-icon icon-name="utility:add" onclick={addMoreRow}></lightning-button-icon>
+                <span class="slds-p-right_x-small" ></span>
+                <lightning-button-icon name={index} onclick={delRow} icon-name="utility:delete"></lightning-button-icon>
+            </div>
+        </template>
+        </div>
+    </div>
+</template>

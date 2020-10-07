@@ -1,0 +1,78 @@
+<template>
+    <lightning-layout class="slds-wrap" multiple-rows="true">
+        <lightning-layout-item size="12">
+            <table class="slds-table">
+                <thead>
+                    <tr class="slds-text-title_caps">
+
+                        <th>
+                            <div class="slds-truncate">Account Name</div>
+                        </th>
+                        <th>
+                            <div class="slds-truncate">Phone</div>
+                        </th>
+                        <th>
+                            <div class="slds-truncate">Rating</div>
+                        </th>
+                        <th>
+                            <div class="slds-truncate">Website</div>
+                        </th>
+                        <th>
+                            <div class="slds-truncate">Industry</div>
+                        </th>
+                        <th>
+                            <div class="slds-truncate">Edit</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={accountList} for:item="accrecord" for:index="index">
+                        <tr key={accrecord.Id} class="slds-hint-parent">
+                            <template if:false={accrecord.show}>
+                                <td>
+                                    <div>{accrecord.accountRecord.Name}</div>
+                                </td>
+                                <td>
+                                    <div>{accrecord.accountRecord.Phone}</div>
+                                </td>
+                                <td>
+                                    <div>{accrecord.accountRecord.Rating}</div>
+                                </td>
+                                <td>
+                                    <div>{accrecord.accountRecord.Website}</div>
+                                </td>
+                                <td>
+                                    <div>{accrecord.accountRecord.Industry}</div>
+                                </td>
+                                <td>
+                                    <lightning-button name={index} label="Edit" variant="brand" onclick={editrecord}></lightning-button>
+                                </td>
+                            </template>
+                            <template if:true={accrecord.show}>
+                                <td>
+                                    <lightning-input data-name="Name" value={accrecord.accountRecord.Name}></lightning-input>
+                                </td>
+                                <td>
+                                    <lightning-input data-phone="Phone" value={accrecord.accountRecord.Phone}></lightning-input>
+                                </td>
+                                <td>
+                                    <lightning-input data-r="rating" value={accrecord.accountRecord.Rating}></lightning-input>
+                                </td>
+                                <td>
+                                    <lightning-input data-w="Website" value={accrecord.accountRecord.Website}></lightning-input>
+                                </td>
+                                <td>
+                                    <lightning-input data-i="Industry" value={accrecord.accountRecord.Industry}></lightning-input>
+                                </td>
+                                <td>
+                                    <lightning-button name={index} label="save" onclick={saveRecord} variant="success"></lightning-button>
+                                    <lightning-button name={index} label="Delete" variant="destructive" onclick={deleteRecordMethod}></lightning-button>
+                                </td>
+                            </template>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

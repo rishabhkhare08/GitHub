@@ -1,0 +1,173 @@
+<template>
+  <div class="slds-panel slds-size_full slds-panel_docked slds-panel_docked-right slds-is-open" aria-hidden="false">
+    <div class="slds-panel__header header">
+      <div class="slds-page-header">
+        <div class="slds-page-header__name">
+          <h1>
+            <span class="slds-page-header__title slds-truncate">Object Count</span>
+          </h1>
+        </div>
+        <lightning-icon size="small" class="slds-float_right" icon-name="standard:filter" onclick={newPanel}>
+        </lightning-icon>
+      </div>
+    </div>
+    <div data-na="panel" class="slds-panel__body body">
+      <div class="slds-grid slds-left_x-small slds-grid--align-spread slds-p-bottom_small">
+        <div class="slds-col slds-size--1-of-2 slds-medium-size--5-of-6 slds-large-size--4-of-12">
+          <span>Select Objects to see count <lightning-icon size="xx-small" class="slds-p-left_medium"
+              icon-name="utility:info"></lightning-icon></span>
+          <lightning-dual-listbox id="selectOptions" name="Select Options" source-label="Available"
+            selected-label="Selected" options={listOptions} onchange={handleChange}>
+          </lightning-dual-listbox>
+          <div class="slds-float_right slds-p-around_small">    
+            <lightning-button label="Get Count" variant="brand" onclick={totalCount}></lightning-button>
+          </div>
+          <template if:true={showTable}>
+            <table class="slds-around_x-small table">
+              <tr class="slds-border_bottom ">
+                <th class="slds-p-around_xx-small">SObject Name</th>
+                <th class="slds-p-around_xx-small">Total Records</th>
+              </tr>
+              <template for:each={sobjectWrapList} for:item="sobj">
+                <tr class="slds-border_bottom" key={sobj}>
+                  <td class="slds-p-around_xx-small">{sobj.name}</td>
+                  <td class="slds-p-around_xx-small">{sobj.count}</td>
+                </tr>
+              </template>
+            </table>
+          </template>
+          <div class="slds-p-top_medium">     
+          <template if:true={showGroupTable}>   
+            <div class="slds-around_x-small">             
+            <h4 class="slds-text-heading_small slds-around_x-small tableheder" id="dialog-heading-id-104"><b>{headObjectName}</b></h4>   
+          </div>                     
+            <table class="slds-around_x-small table">
+              <tr class="slds-border_bottom ">
+                <th class="slds-p-around_xx-small">{fieldLabel}</th>
+                <th class="slds-p-around_xx-small">count</th>
+              </tr>
+              <template for:each={groupList} for:item="list">
+                <tr class="slds-border_bottom" key={list}>
+                  <td class="slds-p-around_xx-small">{list.name}</td>
+                  <td class="slds-p-around_xx-small">{list.count}</td>
+                </tr>
+              </template>
+            </table>
+      </template>
+       </div>
+        </div>
+
+        <section data-id="popover" aria-describedby="dialog-body-id-98" data-pop="pop"
+          style="display:none; position:absolute;" aria-label="Dialog Title"
+          class="slds-popover slds-nubbin_right  slds-popover_medium" role="dialog">
+          <button class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close" title="Close dialog">
+            <lightning-icon icon-name="utility:close" size="x-small" onclick={closepopover}></lightning-icon>
+          </button>
+          <div class="slds-p-around_x-small">
+          </div>        
+          <div class="slds-popover__body" id="dialog-body-id-98">
+            <lightning-combobox name="progress" data-ob="object" label="Object" value={getObjec} options={options} onchange={getObject}>
+            </lightning-combobox>
+            <lightning-combobox data-fi="field" name="Field" label="Fields" value={getLabel} options={getField}
+              onchange={getOperatorAndValue}></lightning-combobox>
+            <lightning-combobox name="operator" label="Operator" data-operator="operator" value={getOpe}
+              options={fields}>
+            </lightning-combobox>
+            <template if:false={input}>
+              <lightning-input type="text" data-input="input" value={getva} label="value"></lightning-input>
+            </template>
+            <template if:true={date}>
+              <lightning-input type="date" data-date="date" value={getva} label="value"></lightning-input>
+            </template>
+            <template if:true={pick}>
+              <lightning-combobox name="value" data-pickvalue="picklist" value={getva} label="Value" options={values} onchange={selectedPicklistValue}>
+              </lightning-combobox>
+            </template>
+            <template if:true={radioContactTrue}>
+            <div class="slds-p-top_x-small">
+              <div>
+              <input  data-radio="radio" size="medium" onclick={getSubsidiary} type="radio"></input>
+              <span class="slds-p-left_xx-small slds-text-body_medium">Group By Subsidiary Code</span></div>
+              <div>
+              <input  data-radio="radio" size="medium" onclick={getSubsidiary} type="radio"></input>
+              <span class="slds-p-left_xx-small slds-text-body_medium"> Group by Career Level</span></div>
+              <div>
+              <input  data-radio="radio" size="medium" onclick={getSubsidiary} type="radio"></input>
+              <span class="slds-p-left_xx-small slds-text-body_medium">Group by Activity Status</span></div>
+            </div>
+          </template>
+          <template if:true={radioUserTrue}>
+            <div>
+              <input  data-radio="radio" size="medium" onclick={getSubsidiary} type="radio"></input>
+              <span class="slds-p-left_xx-small slds-text-body_medium">Group By Subsidiary Code</span></div>
+          </template>
+            <div class="slds-p-around_small">
+              <lightning-button class="slds-float_right slds-p-around_x-small" onclick={reflectFieldValue}
+                variant="brand" label="Done"></lightning-button>
+            </div>
+          </div>
+        </section>
+        <!-- </template> -->
+
+        <div data-div="filterdiv" class="slds-col slds-size--1-of-2 slds-medium-size--3-of-6 slds-large-size--3-of-12 ">
+          <template if:true={openPanel}>
+            <div class="slds-panel slds-size_medium slds-panel_docked slds-panel_docked-right slds-is-open"
+              aria-hidden="false">
+              <div class="slds-panel__header filterheader">
+                <h2 class="slds-panel__header-title slds-text-heading_small slds-truncate" title="Filter">Filter</h2>
+                <button onclick={closePanel}
+                  class="slds-button slds-button_icon slds-button_icon-small slds-panel__close" title="Collapse Filter">
+                  <lightning-icon size="x-small" icon-name="utility:close"></lightning-icon>
+                </button>
+              </div>
+              <div class="slds-panel__body filterbody">
+                <div class="slds-filters">
+                  <template if:true={showPanelBodyHead}>
+                    <h3 class="slds-text-body_small slds-m-vertical_x-small">Matching all these filters</h3>
+                  </template>
+                  <ol class="slds-list_vertical slds-list_vertical-space">
+                    <template for:each={filterList} for:item="add" for:index="index">
+                      <li key={add} class="slds-item slds-hint-parent">
+                        <div class="slds-box slds-grid slds-shrink-none box">
+                          <template if:false={add.showdiv}>
+                            <button id={index} class="slds-button_reset slds-text-link" onclick={newFilterOnClick}>new
+                              filter*</button>                        
+                          </template>
+                          <template if:true={add.showdiv}>
+                            <template for:each={add.list} for:item="data">                              
+                              <div onclick={openPopover} id={index} key={data}>
+                                <button class="slds-button_reset slds-grow slds-has-blur-focus">
+                                  <div>{data.label}</div>
+                                  <div class="slds-text-body_small">{data.operator}
+                                    <span class="slds-p-left_xx-small slds-text-body_small">{data.value}</span>                                  
+                                  </div>
+                                  </button>                                                                                              
+                              </div>
+                            </template>
+                          </template>
+                          <button value={index} class="slds-button_reset slds-text-link slds-col_bump-left">
+                            <lightning-icon data-in={index} onclick={revomeFilter} size="x-small" icon-name="utility:close"></lightning-icon>
+                          </button>
+                        </div>
+                      </li>
+                    </template>
+                  </ol>
+                  <div class="slds-filters__footer slds-grid slds-shrink-none">
+                    <button onclick={addFilterDiv} class="slds-button_reset slds-text-link">Add Filter</button>
+                    <button onclick={removeAllFilter} class="slds-button_reset slds-text-link slds-col_bump-left">Remove
+                      All</button>
+                  </div>
+                </div>
+              </div>
+              <template if:true={showSaveButton}>
+              <div class="slds-p-around_medium">
+                <lightning-button label="Refresh Count" variant="brand" onclick={updateTable}></lightning-button>
+              </div>
+            </template>
+            </div>
+          </template>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,42 @@
+<template>
+    <div class="slds-p-around_small main">
+        <div onclick={getContact}>Related</div>
+        <template if:true={showCard}>
+            <div class="slds-box">
+                <div class="slds-card">
+                    <h1><lightning-icon icon-name="standard:contact"></lightning-icon> Contact({numberOfContact})</h1>
+                    <!-- <template for:each={contactName} for:item="name">
+                        <div key={name}> -->
+                            <lightning-card variant="narrow" icon-name="standard:contact">
+                                <h1 slot="title">rishabh</h1>
+                                <div slot="actions">
+                                    <lightning-button-icon icon-name="utility:down"></lightning-button-icon>
+                                </div>
+                                <template for:each={contactList} for:item="contact">
+                                    <div key={contact}>
+                                        <div key={contact}>
+                                            <span class="slds-p-around_small">Title:</span>
+                                            <span>{contact.Title}</span>
+                                        </div>
+                                        <div key={contact}>
+                                            <span class="slds-p-around_small">Email:</span>
+                                            <span>{contact.Email}</span>
+                                        </div>
+                                        <div key={contact}>
+                                            <span class="slds-p-around_small">Phone:</span>
+                                            <span>{contact.Phone}</span>
+                                        </div>
+                                    </div>
+                                </template>
+                                <div slot="footer">
+                                    <h6>view All</h6>
+                                </div>
+                            </lightning-card>
+                        <!-- </div>
+                    </template> -->
+                </div>
+            </div>
+        </template>
+    </div>
+
+</template>

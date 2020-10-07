@@ -1,0 +1,15 @@
+.main{
+ background-color: white;   
+}
+.btn{
+    color: #0070d2;
+}
+.btn:hover{
+    text-decoration: #0070d2 underline;
+}
+.box{
+    background-color: rgb(250, 255, 189);
+}
+.box:hover{
+    background-color:lightgray ;
+}

@@ -1,0 +1,30 @@
+<template>
+    <div class="slds-p-around_small">
+        <div class="slds-card slds-wrap">
+            <lightning-input class="slds-p-around_x-small" label="Sobject Name" data-id="sobject" type="text"
+                variant="standard"></lightning-input>
+            <lightning-button class="slds-p-around_xx-small slds-theme_brand" name="search" onclick={searchSobject}
+                variant="brand" label="search"></lightning-button>
+        </div>
+        <div class="slds-grid slds-wrap slds-gutters main">
+                <template for:each={wrapperList} for:item="accfield" for:index="main">
+                    <div key={accfield} class="slds-col slds-size-small_1-of-1">
+                        <template if:true={accfield.isPicklist}>
+                            <label>{accfield.accountLabel}</label>
+                            <select name={main} onchange={getData} class="slds-select">
+                                <template for:each={accfield.picklistValue} for:item="pick" for:index="index">
+                                    <option key={pick} value={pick}>{pick}</option>
+                                </template>
+                            </select>
+                        </template>
+                    </div>
+                    <div key={accfield} class="slds-col">
+                        <template if:false={accfield.isPicklist}>
+                            <lightning-input label={accfield.accountLabel} name={main} type={accfield.accountFieldType}
+                                class="slds-align_center" onchange={inputValue} variant="standard"></lightning-input>
+                        </template>
+                    </div>
+                </template>
+        </div>
+    </div>
+</template>

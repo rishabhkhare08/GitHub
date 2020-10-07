@@ -1,0 +1,90 @@
+<template>
+    <table class="slds-table slds-no-row-hover">
+        <thead>
+            <tr class="slds-text-title_caps">
+                <th>
+                    <div class="slds-truncate" title="Account">Account name</div>
+                </th>
+                <th>
+                    <div class="slds-truncate" title="Phone">Phone</div>
+                </th>
+                <th>
+                    <div class="slds-truncate" title="Website">Website</div>
+                </th>
+                <th>
+                    <div class="slds-truncate" title="Rating">Rating</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <template for:each={accountList} for:item="acc">
+            <tr class="slds-hint-parent" key={acc.Id}>
+                <td>{acc.Name}</td>
+                <td>{acc.Phone}</td>
+                <td>{acc.Website}</td>
+                <td>{acc.Rating}</td>
+            </tr>
+            </template>
+        </tbody>
+    </table>
+    <template if:true={showBox}>
+    <table class="slds-table slds-table_bordered">
+        <thead>
+            <tr class="slds-text-title_caps">
+                <th>
+                    <div class="slds-truncate" title="Contact name">Contact name</div>
+                </th>
+                <th>
+                    <div class="slds-truncate" title="Account name">Account name</div>
+                </th>
+                <th>
+                    <div class="slds-truncate" title="Email">Email</div>
+                </th>
+                <th>
+                    <div class="slds-truncate" title="Phone">Phone</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <template for:each={contactList} for:item="con">
+            <tr class="slds-hint-parent" key={con.Id}>             
+                <td>{con.Name}</td>
+                <td>{con.AccountId}</td>
+                <td>{con.Email}</td>
+                <td>{con.Phone}</td>
+            </tr>
+        </template>
+        </tbody>
+    </table>
+</template>
+<template if:true={opportunityShowBox}>
+    <table class="slds-table slds-no-row-hover slds-table_bordered">
+        <thead>
+            <tr class="slds-text-title_caps">
+                <th>
+                    <div class="slds-truncate" title="Opportunity name">Opportunity name</div>
+                </th>
+                <th>
+                    <div class="slds-truncate" title="Account name">Account name</div>
+                </th>
+                <th>
+                    <div class="slds-truncate" title="Close date">Close date</div>
+                </th>
+                <th>
+                    <div class="slds-truncate" title="Stage">Stage</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <template for:each={opportunityList} for:item="opp">
+            <tr class="slds-hint-parent" key={opp.Id}>
+                <td>{opp.Name}</td>
+                <td>{opp.AccounId}</td>
+                <td>{opp.CloseDate}</td>
+                <td>{opp.StageName}</td>
+            </tr>
+        </template>
+        </tbody>
+    </table> 
+</template>
+</template>

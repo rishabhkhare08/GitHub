@@ -1,0 +1,46 @@
+.main{
+    min-width: 60%;
+    max-width: 100% !important;
+    background-color:white;
+}
+.Page{
+    text-align: center;
+    color: whitesmoke;
+    background-color: #0c4986!important;
+    border: 2px solid rgb(17, 6, 167) !important;
+}
+.slds-icon-text-default{
+   background-color: white;
+}
+.detail{
+    text-align: center;
+    color: whitesmoke;
+    background-color: #0c4986!important;
+    border: 2px solid rgb(17, 6, 167) !important;
+
+}
+.slds-is-open{
+    padding-left: 30px;
+    text-align: left;
+    color: rgb(247, 247, 252);
+    background-color:white;
+}
+.color{
+    color: rgb(8, 8, 129);
+}
+.slds-box{
+    width: ;
+}
+.slds-accordion__summary-heading{
+    background-color: #0c4986!important;
+}
+.label{
+    padding-left: 10px;
+}
+.b{
+    padding-left: 10px;
+}
+.check{
+    padding-left: 10px;
+  padding-right: 40px;
+}

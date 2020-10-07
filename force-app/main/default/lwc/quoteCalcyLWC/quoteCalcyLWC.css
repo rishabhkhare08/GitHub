@@ -1,0 +1,38 @@
+.main{
+    background-color: white;
+    position: relative;
+    max-width: 110% !important;
+}
+.mainlabel{
+    padding-left: 10px;
+}
+.color{
+    color: #00131f;
+}
+.btnicon{
+    border: 1px solid;
+    border-radius: 8px;
+    background-color: white;
+}
+.slds-is-open{
+    color: rgb(247, 247, 252);
+    background-color:white;
+}
+.slds-accordion__summary-heading{
+    color:white;
+    width: 100%;
+    background-color: #3c5977!important;
+}
+.head{
+    text-align: center;
+}
+.pos{
+    position: relative;
+}
+.Page{
+    position: relative;
+    text-align: center;
+    color: whitesmoke;
+    background-color: #3c5977!important;
+
+}

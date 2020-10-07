@@ -1,0 +1,24 @@
+<template>
+  <div class="slds-box main">
+      <c-popover-component-l-w-c></c-popover-component-l-w-c>
+    <template if:true={showPop}>
+    <div>Matching all of these filters</div>
+    <template for:each={iterate} for:item="it" for:index="index">
+      <div class="slds-p-bottom_x-small slds-p-top_x-small" key={it}>
+       
+        <div class="slds-box box">
+          <span onclick={popovr}>new filter<span>*</span>   
+        </span>
+          <span class="slds-float_right slds-p-right_x-small">
+            <lightning-icon size="x-small" data-index={index} onclick={remove} icon-name="utility:close"></lightning-icon>
+          </span>      
+        </div>
+      </div>
+    </template>
+     </template>
+    <div>
+      <span onclick={popoverFunc} class="btn">Add Filters</span>
+      <span class="slds-float_right slds-p-right_small btn" data-index={index} onclick={removeall}>Remove All</span>
+    </div>
+  </div>
+</template>

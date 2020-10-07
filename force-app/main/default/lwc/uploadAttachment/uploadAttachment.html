@@ -1,0 +1,46 @@
+<template>
+    <div class="slds-card" style="height: fit-content;">
+    <lightning-card>
+        <div style="margin-left: 35%; padding:35px;">
+            <lightning-file-upload accept={acceptedFormats} 
+                                   label="Upload Document" 
+                                   multiple="multiple" 
+                                   onuploadfinished={handleUploadFinished} 
+                                   record-id={recordId}></lightning-file-upload>
+
+        </div>
+        
+    </lightning-card>
+    <template if:true={showTable}>  
+        <div class="slds-p-bottom_small" style="    padding-right: 80px;float: right; padding-top: 65px">
+            <lightning-button label="Selected Delete" onclick={selectedDeleteRecords} variant="destructive"></lightning-button>
+        </div>
+            <div class="slds-float_right slds-p-bottom_small" style="padding-right: 100px; padding-top:65px;">
+            <lightning-button label="Delete All" onclick={deleteRecords} variant="destructive"></lightning-button>
+        </div>
+        <div style="margin-left: 5%;" class="slds-p-bottom_medium"> 
+    <table>
+        <tr class="slds-p-top_medium">
+            <th><lightning-input type="checkbox" data-id="checkbox" variant="label-hidden" onclick={makeTrue}></lightning-input></th>
+            <th>Name</th>
+            <th>File Type</th>
+            <th>size</th>
+            <th>Create Date</th>
+            <th>Modified Date</th>          
+        </tr>
+        <template for:each={tableList} for:item="ad" for:index="index">
+            <tr key={ad} class="slds-p-around_small">
+                <th><lightning-input checked={ad.check} type="checkbox" data-check={index} onclick={makeTrueRecord} variant="label-hidden"></lightning-input></th>
+             <td ><button id={index} style="padding:fitcontent" onclick={openDocument} class="slds-button_reset slds-text-link">{ad.title}</button></td>
+             <td>{ad.fileType}</td>
+             <td>{ad.contentSize}</td>
+             <td>{ad.createDate}</td>
+             <td>{ad.modifiedDate}</td>
+            </tr>
+        </template>
+       
+    </table>
+</div>
+    </template>
+</div>
+</template>

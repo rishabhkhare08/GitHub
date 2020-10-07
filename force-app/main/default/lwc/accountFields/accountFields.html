@@ -1,0 +1,55 @@
+<template>
+    <div class="main">
+        <div class="slds-p-around_small slds-size_12-of-12">
+            <lightning-input class="slds-p-around_x-small" label="Sobject Name" data-id="sobject" type="text"
+                variant="standard"></lightning-input>
+            <lightning-button class="slds-p-around_xx-small slds-theme_brand" name="search" onclick={searchSobject}
+                variant="brand" label="search"></lightning-button>
+        </div>
+        <template for:each={wrapperList} for:item="accfield" for:index="main">
+            <div key={accfield.id} class="slds-grid">
+                <div class="slds-col slds-size_1-of-1 slds-p-around_small slds-size-large_6-of-12">
+                    <template if:true={accfield.isPicklist}>
+                        <label>{accfield.accountLabel}</label>
+                        <select name={main} onchange={getData} class="slds-select">
+                            <template for:each={accfield.picklistValue} for:item="pick" for:index="index">
+                                <option key={pick} value={pick}>{pick}</option>
+                            </template>
+                        </select>
+                    </template>
+                    <template if:true={accfield.isMultiPicklist}>
+                        <lightning-dual-listbox name={accfield.fieldApi} class="slds-p-around_xx-small"
+                            label={accfield.accountLabel} source-label="Available" selected-label="Selected"
+                            onchange={handleChange} options={pickvalue}>
+                        </lightning-dual-listbox>
+                    </template>
+                    <template if:true={accfield.isLookup}>
+                        <lightning-input label="Account" type="search" name={main} value={accountName}
+                            onkeyup={showAcc}>
+                        </lightning-input>
+                        <template if:true={showBox}>
+                            <template for:each={accountList} for:item="acc">
+                                <div onclick={setAccountName} class="slds-p-bottom_x-small" data-name={acc.Id}
+                                    data-index={main} data-id={acc.Name} key={acc.Id}>
+                                    <span class="slds-p-right_x-small">
+                                        <lightning-icon size="small" icon-name="standard:account"></lightning-icon>
+                                    </span>
+                                    {acc.Name}</div>
+                            </template>
+                            <span class="slds-align_center">
+                                <lightning-icon size="x-small" icon-name="utility:add"></lightning-icon>New Account
+                            </span>
+                        </template>
+                    </template>
+                    <template if:false={accfield.isPicklist}>
+                        <lightning-input label={accfield.accountLabel} name={main} type={accfield.accountFieldType}
+                            class="slds-align_center" onchange={inputValue} variant="standard"></lightning-input>
+                    </template>
+                </div>
+            </div>
+        </template>
+        <div class=" slds-p-around_x-small">
+            <lightning-button label="save"  variant="brand" onclick={saveContact}></lightning-button>
+        </div>
+    </div>
+</template>

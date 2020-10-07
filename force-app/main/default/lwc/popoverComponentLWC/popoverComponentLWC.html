@@ -1,0 +1,28 @@
+<template>
+  <template if:true={show}>
+    <section aria-describedby="dialog-body-id-100" data-id="test" style="display:none;position:absolute;top:130px;left:584.007px;height:300px" aria-labelledby="dialog-heading-id-105" aria-label="Dialog Title" class="slds-popover slds-popover_panel slds-nubbin_right slds-popover_large" role="dialog">    
+      <lightning-icon  onclick={closeFunc} size="x-small" icon-name="utility:close"></lightning-icon></div>
+        <div class="slds-popover__body" id="dialog-body-id-100"> 
+            <lightning-combobox
+            name="progress"
+            label="Field"
+            value={value}
+            placeholder="Select Progress"
+            options={options}
+            onchange={handleChange}></lightning-combobox>
+            <lightning-combobox
+            name="operator"
+            label="Operator"
+            value={value}
+            placeholder="Select Progress"
+            options={opp}
+            onchange={handle}></lightning-combobox>
+            <lightning-input label="value" onchange={saveValue} class="slds-p-around_small" ></lightning-input>
+            <div class="slds-float_right slds-p-around_small">
+            <lightning-button variant="brand" onclick={saveData} label="Done"></lightning-button>
+          </div>
+          </div>
+      </section>
+    </template>
+</template> 
+</div>

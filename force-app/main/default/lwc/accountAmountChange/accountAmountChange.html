@@ -1,0 +1,17 @@
+<template>
+    <lightning-layout class="slds-p-around_x-small slds-wrap" multiple-rows="true">
+        <lightning-layout-item size="6">
+            <lightning-input label="Amount" name = "amount" type="number" data-id = "amount" variant="standard"></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="6">
+            <lightning-button-group class="slds-button-group-row slds-p-around_large">
+                <div class="slds-button-group-item">
+                    <lightning-button class="slds-p-around_x-small slds-theme_neutral" onclick={addAccount} name = "add" icon-position="left" variant="neutral" type="button" icon-name="utility:add"></lightning-button>
+                </div>
+                <div class="slds-button-group-item">
+                    <lightning-button class="slds-p-around_x-small slds-theme_neutral" name="sub" value={amount} onclick={addAccount} icon-position="left" variant="Destructive" type="button" icon-name="utility:dash"></lightning-button>
+                </div>
+            </lightning-button-group>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>
