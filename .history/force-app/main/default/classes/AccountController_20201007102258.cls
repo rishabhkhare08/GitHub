@@ -42,7 +42,6 @@ public void saveAccName(){
             updateAcc.Id = accObj.Id;
             updateAcc.Name=accObj.Name;
             updateAcc.Phone=accObj.Phone;
-            
         }   
     }
 update updateAcc;
