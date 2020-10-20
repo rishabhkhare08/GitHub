@@ -45,5 +45,7 @@ public void saveAccName(){
         }   
     }
 update updateAcc;
+
 getAcc = null;
+
 }
